@@ -1,0 +1,4 @@
+site/
+.venv-docs/
+*.log
+.DS_Store

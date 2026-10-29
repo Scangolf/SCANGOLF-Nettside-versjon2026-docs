@@ -1,0 +1,22 @@
+site_name: SCANGOLF – nettside 2026
+site_description: Drift, publisering og vedlikehold av cs25.clubsite.no.
+site_url: https://scangolf.github.io/SCANGOLF-Nettside-versjon2026-docs/
+repo_url: https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs
+repo_name: Scangolf/SCANGOLF-Nettside-versjon2026-docs
+edit_uri: ""
+theme:
+  name: mkdocs
+  locale: nb
+  navigation_depth: 3
+plugins:
+  - search:
+      lang:
+        - "no"
+nav:
+  - Oversikt: index.md
+  - Arkitektur og filer: arkitektur.md
+  - Lokal utvikling: utvikling.md
+  - Publisering og tilbakeføring: publisering.md
+  - Kvalitetskontroll: kvalitet.md
+  - Plan og sjekklister: plan.md
+  - Endringslogg: endringslogg.md
