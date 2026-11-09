@@ -1,76 +1,92 @@
-# Publisering og tilbakeføring
+# Publisering til IIS
 
-## Før bygging
+## Redigering av toppmenyen
 
-- [ ] Arbeidet er knyttet til en GitHub-oppgave.
-- [ ] Kildeendringene er gjennomgått og lagret i Git.
-- [ ] CI og dokumentasjonsbygget har bestått for aktuell commit.
-- [ ] Endringen og eventuelle begrensninger er dokumentert.
+Menytekst, overskrifter, lenker og rekkefølge redigeres i
+`lib/content/meny.ts`. Desktop, nettbrett og mobil bruker samme innholdsfil.
+Behold formatet `{ label: 'Navn', href: '/side' }` for lenker. Interne lenker
+må peke til eksisterende sider. Produktinnhold og sidens URL endres ikke ved
+å redigere menyfilen.
 
-## Bygg pakken
+## Kundeuttalelser
 
-```powershell
-npm ci
-npm run build:iis
-```
+De delte kundeuttalelsene som vises på forsiden og `/referanser`, redigeres
+kun i `lib/content/customerTestimonials.ts`. Begge sidene bruker samme
+komponent og datakilde; ikke legg inn egne sitatkopier på enkeltsidene.
 
-- [ ] Bygget er et produksjonsbygg, ikke kopierte utviklingsfiler.
-- [ ] Alle forventede sider og deres TXT-sidedata finnes.
-- [ ] Filkontrollen har bestått.
-- [ ] `_old` inneholder bare lokale sikkerhetskopier og utelatte filer.
-- [ ] Alt utenfor `_old` er ment for opplasting.
+## Merkevare og produktnavn
 
-## Bevar en versjon
+ScanGolf Clubsite HUB er navnet på det samlede løsningsuniverset, med
+slagordet «For golfklubber med ambisjoner!». Clubsite CMS, Clubsite Booking,
+Scangolf.no, appene og partnerløsningene beholder sine egne produktnavn.
+Sørg for at endringer i felles merkevaretekster ikke erstatter navnene på
+enkeltproduktene eller endrer eksisterende URL-er.
 
-```powershell
-.\scripts\package-iis.ps1 -Version v2026.10.29
-```
+Kjør kodekontroll og bygg før inkrementell publisering. En endring i den
+felles toppmenyen krever oppdaterte statiske sidefiler for sidene som viser
+menyen; uendrede ressurser skal fortsatt hoppes over.
 
-Bruk et nytt versjonsnavn for hver nye release. Kommandoen lager en ZIP,
-en manifestfil med SHA-256 per fil og en kontrollsum for selve ZIP-filen i
-`.releases`. `_old` tas ikke med, og eksisterende filer overskrives ikke.
+## Vanlig publisering
 
-Last filene opp som vedlegg til en GitHub Release for den eksakte commiten:
+Etter at innhold eller kode er endret, kjør én kommando fra prosjektmappen:
 
 ```powershell
-gh release create v2026.10.29 --repo Scangolf/SCANGOLF-Nettside-versjon2026 --target main --title "Nettside 2026 – første publisering" --generate-notes .releases\SCANGOLF-Nettside-versjon2026-iis-v2026.10.29.zip .releases\SCANGOLF-Nettside-versjon2026-iis-v2026.10.29.manifest.json .releases\SCANGOLF-Nettside-versjon2026-iis-v2026.10.29.zip.sha256
+npm run deploy:iis
 ```
 
-Taggen må peke på commiten som faktisk ble brukt. Ikke gjenbruk en tidligere
-tagg eller erstatt vedleggene til en allerede publisert release.
+Kommandoen bygger og kontrollerer den statiske IIS-pakken lokalt før den
+kobler til serveren. Hvis byggingen feiler, blir ingenting lastet opp.
 
-## Kopier til IIS
+Publiseringen sammenligner SHA-256 for pakkefilene med siste vellykkede
+publisering og sender bare nye eller endrede filer. Tilfeldig build-ID i
+statisk HTML/TXT ignoreres i sammenligningen, slik at en endring på én side
+ikke tvinger opplasting av alle sidene. Ressurser og interne skript sendes
+før TXT-/HTML-sider, og `web.config` sendes sist. Hvis ingen filer er endret,
+kobler publiseringen ikke til serveren og laster ingenting opp.
 
-- [ ] Ta backup av dagens serverinnhold og eventuell lokal serverkonfigurasjon.
-- [ ] Bekreft at riktig webrot for cs25.clubsite.no er valgt.
-- [ ] Avklar eventuelle serverfiler, dokumenter eller andre apper som ikke
-  finnes i pakken og ikke skal slettes.
-- [ ] Avtal vedlikeholdsvindu ved full utskifting.
-- [ ] Kopier **alt innholdet i `iis-publisering`, unntatt `_old`**.
-- [ ] Ta med `_next`, bilder, fonter, HTML, TXT-sidedata og `web.config`.
-- [ ] Ved løpende oppdatering: last opp ressursfiler og TXT før HTML,
-  og `web.config` sist. Bevar eldre ressursfiler mens åpne faner kan bruke dem.
-- [ ] Ikke last opp prosjektmappen, `.git`, `.releases`, dokumentasjon,
-  `node_modules`, `out` eller `site`.
+Før en eksisterende fil overskrives, lastes akkurat den filen ned til:
 
-Ingen workflow i dette repoet endrer IIS-serveren automatisk.
+```text
+iis-publisering\_old\serverbackup-<tidspunkt>\
+```
 
-## Kontroller og registrer
+Filer som ikke lenger finnes i den lokale pakken slettes ikke automatisk fra
+serveren. Dette bevarer gamle, hashede ressurser som kan være i bruk av åpne
+nettleserfaner. Kontroller eventuelle foreldreløse sider før manuell rydding.
 
-Følg [CLI-sjekklisten](kvalitet.md).
+## Forhåndsvisning av endringer
 
-- [ ] Registrer dato, commit/tagg, release og hvem som publiserte.
-- [ ] Registrer faktiske resultater fra serverkontroll, ikke bare lokalt bygg.
-- [ ] Opprett oppgaver for funn; ikke erklær utestet funksjonalitet godkjent.
+For å se hvilke filer som ville blitt publisert uten å koble til serveren:
+
+```powershell
+.\scripts\publish-ftps.ps1 -Preview
+```
+
+For å publisere et avgrenset utvalg fra den ferdigbygde pakken, oppgi relative
+filbaner. Manifestet oppdateres da bare for filene som faktisk ble overført:
+
+```powershell
+.\scripts\publish-ftps.ps1 -OnlyFiles 'partner-apper/google-workspace.html','assets/images/workspace-non-profits.png'
+```
+
+SHA-256-manifestet for siste vellykkede opplasting og publiseringslogger
+lagres lokalt utenfor prosjektet:
+
+```text
+%USERPROFILE%\.scangolf\cs25-iis-published.json
+%USERPROFILE%\.scangolf\logs\
+```
+
+Ved første publisering på en ny maskin finnes ikke manifestet ennå. Da
+publiseres hele pakken én gang; etter en vellykket opplasting blir videre
+publiseringer inkrementelle.
 
 ## Tilbakeføring
 
-1. Stans videre publisering.
-2. Velg sist fungerende release eller serverbackup.
-3. Kontroller ZIP- og filhasher mot manifestet.
-4. Gjenopprett riktig webrot uten å berøre IIS-bindinger eller sertifikater.
-5. Kjør CLI-kontrollen igjen og registrer hva som ble tilbakeført.
+De overskrevne serverfilene ligger i den lokale sikkerhetskopien nevnt over.
+Kopier ønsket fil tilbake til samme relative plassering i webroten via FTPS.
+Nye filer har ingen tidligere versjon å gjenopprette; publiser den tidligere
+pakken på nytt for å tilbakeføre dem.
 
-En kildekode-tag alene er ikke en identisk publiseringspakke: avhengigheter,
-byggeverktøy og ressurser kan påvirke et nytt bygg. Bruk releasevedlegget ved
-behov for nøyaktig samme filer.
+Påloggingen leses fra `%USERPROFILE%\.scangolf\cs25-ftp-credentials.ps1`.
+Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.
