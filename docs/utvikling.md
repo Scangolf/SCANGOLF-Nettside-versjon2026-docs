@@ -37,8 +37,9 @@ sikkerhetsgjennomgang. Se [kvalitetskontrollen](kvalitet.md).
 ## Lagre endringer
 
 - Endre kildekoden, ikke genererte filer.
-- Opprett en pull request med utfylt sjekkliste.
-- Kontroller at GitHub Actions har bestått.
+- Publiser direkte til IIS med `npm run deploy:iis`.
+- Test live-sidene og berørte lenker med Playwright.
+- Når testene består, committ og push kildekoden til Git.
 - Oppdater dokumentasjon og endringslogg ved atferdsendringer.
 - Opprett en release når en godkjent pakke skal publiseres.
 
@@ -67,7 +68,8 @@ Etter endringer:
 2. Kjør `mkdocs build --strict` som beskrevet ovenfor.
 3. Klon det offentlige dokumentasjonsrepoet til en separat lokal mappe dersom
    det ikke allerede finnes.
-4. Kjør synkroniseringsskriptet fra det private nettsideprosjektet:
+4. Kjør synkroniseringsskriptet fra det private nettsideprosjektet etter at
+   nettsiden er publisert og testet:
 
 ```powershell
 .\scripts\sync-docs.ps1 -Destination 'C:\Dev\SCANGOLF-Nettside-versjon2026-docs'
@@ -76,13 +78,15 @@ Etter endringer:
 5. Skriptet kopierer bare Markdown-dokumentasjonen, `mkdocs.yml` og
    `requirements-docs.txt`. Det krever en ren arbeidsmappe med riktig remote.
    Det gjør ingen commit, push eller IIS-opplasting.
-6. Gå gjennom endringene i dokumentasjonsrepoet og lagre dem i Git.
-   Nye commits på `main` bygger og publiserer Pages automatisk.
-7. Bekreft Actions-resultatet og HTTP 200 på dokumentasjonsadressen med CLI.
+6. Gå gjennom endringene i dokumentasjonsrepoet. Kjør `mkdocs build --strict`
+   lokalt, og committ/push deretter dokumentasjonskilden til `main`.
+7. Publiser direkte fra dokumentasjonsrepoet med `mkdocs gh-deploy --force`.
+   Kommandoen bygger nettstedet og oppdaterer `gh-pages`.
+8. Kontroller HTTP 200 på dokumentasjonsadressen med CLI.
 
 Kopier aldri hele nettsideprosjektet, `.env`, releaser, `_old` eller
-IIS-pakken inn i det offentlige repoet. Workflowen i dokumentasjonsrepoet
-har ingen tilgang til det private nettstedets kildekode.
+IIS-pakken inn i det offentlige repoet. Publiser bare den godkjente
+dokumentasjonskilden og det genererte MkDocs-nettstedet.
 
 Lenker til private oppgaver, releaser og Projects krever fortsatt innlogging
 og tilgang; de blir ikke offentlige fordi dokumentasjonen lenker til dem.

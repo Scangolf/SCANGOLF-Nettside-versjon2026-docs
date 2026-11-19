@@ -37,6 +37,10 @@ npm run deploy:iis
 Kommandoen bygger og kontrollerer den statiske IIS-pakken lokalt før den
 kobler til serveren. Hvis byggingen feiler, blir ingenting lastet opp.
 
+Publiser først direkte til IIS. Test den publiserte siden med Playwright,
+inkludert berørte sider og lenker. Når testen er godkjent, committ og push
+kildeendringene til Git. Git inneholder dermed den testede versjonen.
+
 Publiseringen sammenligner SHA-256 for pakkefilene med siste vellykkede
 publisering og sender bare nye eller endrede filer. Tilfeldig build-ID i
 statisk HTML/TXT ignoreres i sammenligningen, slik at en endring på én side

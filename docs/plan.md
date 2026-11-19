@@ -2,16 +2,17 @@
 
 Arbeidet styres i den private
 [GitHub Projects-tavlen](https://github.com/orgs/Scangolf/projects/2).
-Oppgaver skal ha ansvarlig, akseptansekriterier og tilknyttede pull requests.
+Oppgaver skal ha ansvarlig, akseptansekriterier og lenke til relevant commit
+eller publisering.
 
 ## Opprettede GitHub-oppgaver
 
 | Oppgave | Formål |
 |---|---|
-| [#1 – versjonert grunnlag](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/1) | Repo, første release, dokumentasjon og CI |
+| [#1 – versjonert grunnlag](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/1) | Repo, første release og dokumentasjon |
 | [#2 – produksjonskontroll](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/2) | Bekreft aktiv versjon på IIS med CLI |
 | [#3 – tilbakeføring](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/3) | Backup og dokumentert gjenoppretting |
-| [#4 – vedlikeholdsregler](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/4) | PR-er, lint-baseline og avhengigheter |
+| [#4 – vedlikeholdsregler](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/4) | Direkte publisering etter test, lint-baseline og avhengigheter |
 | [#5 – innhold og kvalitet](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/5) | Separat avtalt tilgjengelighets- og visuell gjennomgang |
 | [#6 – Pages](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/6) | Offentlig dokumentasjon fra separat repo, uten å åpne nettsidekoden |
 | [#7 – kontaktløsning](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/7) | Eventuelt fremtidig skjema med faktisk sending |
@@ -56,7 +57,7 @@ Simulatorfunksjoner verifiseres mot Arendal GK.
 
 ## Prioritet 2 – trygg vedlikeholdsrutine
 
-- [ ] Bruk pull requests og bestått CI før publisering.
+- [ ] Publiser direkte, test live med Playwright, og synkroniser deretter kildekoden til Git.
 - [ ] Avklar branch-beskyttelse/regler støttet av organisasjonens abonnement.
 - [ ] Vurder tilgjengelighet, mobilmeny og visuell kontroll som separat avtalt arbeid.
 - [ ] Etabler rutine for avhengighetsoppdateringer og regresjonskontroll.

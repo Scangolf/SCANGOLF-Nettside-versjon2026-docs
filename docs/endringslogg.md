@@ -18,7 +18,7 @@
 - Privat repo: `Scangolf/SCANGOLF-Nettside-versjon2026`.
 - Kildekode, låsefil og byggeskript versjoneres; genererte filer holdes utenfor Git.
 - Den lokale IIS-pakken bevares som release med ZIP og filhasher.
-- MkDocs, CI, oppgavemal og PR-sjekkliste er lagt til.
+- MkDocs, oppgavemal og vedlikeholdsnotater er lagt til.
 - En privat Projects-tavle brukes til videre vedlikehold.
 - GitHub Pages er klargjort, men ikke aktivert. Publisering er utsatt i påvente
   av egnet organisasjonsabonnement og ny kontroll av innhold/synlighet.
@@ -32,9 +32,15 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.
   ikke offentlig nettsidekode.
 - `Scangolf/SCANGOLF-Nettside-versjon2026-docs` inneholder bare gjennomgått
   Markdown-dokumentasjon og nødvendig MkDocs-/Pages-oppsett.
-- Pages bygger ved push til dokumentasjonsrepoets `main` og kan også startes manuelt.
-- Den ubrukte Pages-workflowen i det private nettsiderepoet er fjernet.
+- Dokumentasjonskilden ligger på `main`; den ferdige nettsiden publiseres direkte
+  fra en lokal MkDocs-bygging til `gh-pages`.
 - Dokumentasjonskilden beholdes privat og synkroniseres eksplisitt med et
   avgrenset CLI-skript; det gjøres ingen automatisk kopiering av nettsidekode.
 - Nettsidekoden, releasene og Projects-tavlen forblir private.
 - Ingen endring gjøres i IIS-pakken eller på webserveren.
+
+## 2026-11-19 – direkte publisering
+
+- Nettsiden publiseres direkte til IIS, testes med Playwright og synkroniseres
+  deretter til prosjektets Git-repo.
+- Dokumentasjonen bygges lokalt med MkDocs og publiseres direkte til `gh-pages`.

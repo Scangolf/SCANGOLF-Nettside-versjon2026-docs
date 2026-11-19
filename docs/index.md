@@ -9,7 +9,8 @@ på Windows IIS. Node.js kreves på byggemaskinen, ikke på webserveren.
 - Nettsidekoden, releasene og Projects-tavlen ligger privat.
 - Dokumentasjonen publiseres separat på
   [offentlig GitHub Pages](https://scangolf.github.io/SCANGOLF-Nettside-versjon2026-docs/)
-  fra [dokumentasjonsrepoet](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs).
+  fra [dokumentasjonsrepoet](https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs),
+  med lokal MkDocs-bygging og direkte publisering til `gh-pages`.
 - Prosjekteier har bekreftet publisering av den nye nettsiden 29. oktober 2026.
 - Første release bevarer den lokale publiseringspakken slik den forelå etter
   denne bekreftelsen. Det er ikke en nedlasting fra serveren og dokumenterer

@@ -11,8 +11,8 @@
 - Identifiserte utviklings- og HMR-markører.
 - E-post-/telefonkontakt i stedet for det inaktive kontaktskjemaet.
 
-GitHub Actions bygger dessuten MkDocs med `--strict` og lagrer byggepakker som
-private workflow-artefakter. Dette er ikke automatisk publisering til IIS.
+MkDocs bygges lokalt med `--strict` før direkte publisering til dokumentasjonens
+`gh-pages`-gren. Denne byggingen publiserer ikke nettsiden til IIS.
 
 ## Manuell CLI-kontroll etter opplasting
 
