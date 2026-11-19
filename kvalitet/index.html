@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="nb" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://scangolf.github.io/SCANGOLF-Nettside-versjon2026-docs/kvalitet/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Kvalitetskontroll - SCANGOLF – nettside 2026</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">SCANGOLF – nettside 2026</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Oversikt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../arkitektur/" class="nav-link">Arkitektur og filer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../utvikling/" class="nav-link">Lokal utvikling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../publisering/" class="nav-link">Publisering og tilbakeføring</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Kvalitetskontroll</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../plan/" class="nav-link">Plan og sjekklister</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../endringslogg/" class="nav-link">Endringslogg</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../publisering/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../plan/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs" class="nav-link">Scangolf/SCANGOLF-Nettside-versjon2026-docs</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#kvalitetskontroll" class="nav-link">Kvalitetskontroll</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#hva-kontrolleres-automatisk" class="nav-link">Hva kontrolleres automatisk?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#manuell-cli-kontroll-etter-opplasting" class="nav-link">Manuell CLI-kontroll etter opplasting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#hva-er-ikke-dokumentert-av-en-http-kontroll" class="nav-link">Hva er ikke dokumentert av en HTTP-kontroll?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#historisk-grunnlag-29-oktober-2026" class="nav-link">Historisk grunnlag 29. oktober 2026</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="kvalitetskontroll">Kvalitetskontroll</h1>
+<h2 id="hva-kontrolleres-automatisk">Hva kontrolleres automatisk?</h2>
+<p><code>npm run build:iis</code> bygger og typekontrollerer prosjektet og kontrollerer:</p>
+<ul>
+<li>Eksporterte sider og tilsvarende TXT-navigasjonsdata.</li>
+<li>Interne henvisninger i HTML og ressursadresser i CSS.</li>
+<li>At bilder ikke krever <code>/_next/image</code>.</li>
+<li>PNG-, JPEG- og WebP-signaturer.</li>
+<li>Identifiserte utviklings- og HMR-markører.</li>
+<li>E-post-/telefonkontakt i stedet for det inaktive kontaktskjemaet.</li>
+</ul>
+<p>MkDocs bygges lokalt med <code>--strict</code> før direkte publisering til dokumentasjonens
+<code>gh-pages</code>-gren. Denne byggingen publiserer ikke nettsiden til IIS.</p>
+<h2 id="manuell-cli-kontroll-etter-opplasting">Manuell CLI-kontroll etter opplasting</h2>
+<p>Kjør fra PowerShell. <code>curl.exe</code> brukes eksplisitt for å unngå aliaser.</p>
+<pre><code class="language-powershell">curl.exe -I https://cs25.clubsite.no/
+curl.exe -I https://cs25.clubsite.no/booking
+curl.exe -I https://cs25.clubsite.no/losninger
+curl.exe -I https://cs25.clubsite.no/losninger/clubsite-ai-assistent
+curl.exe -I https://cs25.clubsite.no/nyheter
+curl.exe -I https://cs25.clubsite.no/nyheter/har-fatt-ny-hjelper-pa-hjemmesiden
+curl.exe -I https://cs25.clubsite.no/booking.txt
+curl.exe -I https://cs25.clubsite.no/assets/images/cs.png
+curl.exe -I https://cs25.clubsite.no/default.asp
+curl.exe -I &quot;http://cs25.clubsite.no/booking?test=1&quot;
+curl.exe -I https://cs25.clubsite.no/ikke-en-ekte-side
+</code></pre>
+<p>Forventninger:</p>
+<ul>
+<li>[ ] Eksisterende sider, bilder og sidedata gir 200.</li>
+<li>[ ] Gamle ASP-adresser gir 301 til riktig ny adresse.</li>
+<li>[ ] HTTP gir HTTPS med sti og query bevart.</li>
+<li>[ ] Forsiden omdirigerer ikke til seg selv.</li>
+<li>[ ] Ugyldig adresse gir HTTP 404, ikke 200 med en feilside.</li>
+<li>[ ] Representative CSS-, JavaScript- og fontadresser fra HTML-en gir 200.</li>
+</ul>
+<h2 id="hva-er-ikke-dokumentert-av-en-http-kontroll">Hva er ikke dokumentert av en HTTP-kontroll?</h2>
+<p>Status 200 eller en gyldig bildefil beviser ikke riktig utseende, fungerende
+mobilmeny eller god tilgjengelighet. Visuell kontroll og interaksjonstesting
+må avtales separat. Ingen nettleser eller Playwright skal startes automatisk
+i denne arbeidsrutinen.</p>
+<h2 id="historisk-grunnlag-29-oktober-2026">Historisk grunnlag 29. oktober 2026</h2>
+<p>Før Git-oppsettet ble følgende lokale resultater registrert:</p>
+<ul>
+<li>25 genererte nettsider og 1 061 lokale henvisninger kontrollert ved bygging.</li>
+<li>67 lokale IIS Express HTTP-kontroller uten rapportert feil.</li>
+<li>En tidligere integrert Playwright-gjennomgang rapporterte 25 sider med
+  status 200, 143 bildeelementer uten rapportert bildefeil, ingen rapporterte
+  JavaScript-feil og ingen mislykkede forespørsler.</li>
+</ul>
+<p>Den historiske Playwright-kontrollen var <strong>ikke Playwright CLI</strong>. Det ble ikke
+lagret skjermbilder av alle sidene. Disse resultatene er ikke nye tester av
+det publiserte domenet og dokumenterer ikke at alle sider er visuelt riktige.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

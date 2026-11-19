@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="nb" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://scangolf.github.io/SCANGOLF-Nettside-versjon2026-docs/plan/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Plan og sjekklister - SCANGOLF – nettside 2026</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">SCANGOLF – nettside 2026</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Oversikt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../arkitektur/" class="nav-link">Arkitektur og filer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../utvikling/" class="nav-link">Lokal utvikling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../publisering/" class="nav-link">Publisering og tilbakeføring</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../kvalitet/" class="nav-link">Kvalitetskontroll</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Plan og sjekklister</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../endringslogg/" class="nav-link">Endringslogg</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../kvalitet/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../endringslogg/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs" class="nav-link">Scangolf/SCANGOLF-Nettside-versjon2026-docs</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#plan-og-sjekklister" class="nav-link">Plan og sjekklister</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#opprettede-github-oppgaver" class="nav-link">Opprettede GitHub-oppgaver</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#neste-runde-innholdsutvidelse-etter-lansering" class="nav-link">Neste runde – innholdsutvidelse etter lansering</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="3"><a href="#nye-produktsider-issue-8" class="nav-link">Nye produktsider (issue #8)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="3"><a href="#playwright-funksjonsskanner-issue-9" class="nav-link">Playwright-funksjonsskanner (issue #9)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prioritet-1-bekreft-produksjonsgrunnlaget" class="nav-link">Prioritet 1 – bekreft produksjonsgrunnlaget</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prioritet-2-trygg-vedlikeholdsrutine" class="nav-link">Prioritet 2 – trygg vedlikeholdsrutine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prioritet-3-dokumentasjon-og-forbedringer" class="nav-link">Prioritet 3 – dokumentasjon og forbedringer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sjekkliste-for-hver-oppgave" class="nav-link">Sjekkliste for hver oppgave</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#statusbruk" class="nav-link">Statusbruk</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="plan-og-sjekklister">Plan og sjekklister</h1>
+<p>Arbeidet styres i den private
+<a href="https://github.com/orgs/Scangolf/projects/2">GitHub Projects-tavlen</a>.
+Oppgaver skal ha ansvarlig, akseptansekriterier og lenke til relevant commit
+eller publisering.</p>
+<h2 id="opprettede-github-oppgaver">Opprettede GitHub-oppgaver</h2>
+<table>
+<thead>
+<tr>
+<th>Oppgave</th>
+<th>Formål</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/1">#1 – versjonert grunnlag</a></td>
+<td>Repo, første release og dokumentasjon</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/2">#2 – produksjonskontroll</a></td>
+<td>Bekreft aktiv versjon på IIS med CLI</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/3">#3 – tilbakeføring</a></td>
+<td>Backup og dokumentert gjenoppretting</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/4">#4 – vedlikeholdsregler</a></td>
+<td>Direkte publisering etter test, lint-baseline og avhengigheter</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/5">#5 – innhold og kvalitet</a></td>
+<td>Separat avtalt tilgjengelighets- og visuell gjennomgang</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/6">#6 – Pages</a></td>
+<td>Offentlig dokumentasjon fra separat repo, uten å åpne nettsidekoden</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/7">#7 – kontaktløsning</a></td>
+<td>Eventuelt fremtidig skjema med faktisk sending</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/8">#8 – simulatorprodukter</a></td>
+<td>Produktsider for Clubsite Simulator Booking og Clubsite Sim Launcher</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026/issues/9">#9 – funksjonsskanner</a></td>
+<td>Playwright CLI-skanning av alle Clubsite-funksjoner med skjermbilder</td>
+</tr>
+</tbody>
+</table>
+<h2 id="neste-runde-innholdsutvidelse-etter-lansering">Neste runde – innholdsutvidelse etter lansering</h2>
+<h3 id="nye-produktsider-issue-8">Nye produktsider (issue #8)</h3>
+<p>To produkter mangler i <code>lib/solutionsData.ts</code> og på <code>/losninger</code>:</p>
+<ol>
+<li><strong>Clubsite Simulator Booking</strong> – dokumentert i drift hos
+   <a href="https://arendalgk.no/booking/simulator/kalender">Arendal &amp; Omegn GK</a>:
+   kalender med flere simulatorer (Sim 1–3), timeslots 06:00–23:00,
+   fargekoder (ledig/ditt valg/opptatt/ikke bekreftet/tid passert),
+   brukerkonto med «Min konto», forhåndsbetaling online, verdikort med
+   rabattert forhåndskjøp (f.eks. Gull kr 5 400 for kr 3 500), 14 dagers
+   bookinghorisont, 60 min økter og protimer i utvalgt simulator.</li>
+<li><strong>Clubsite Sim Launcher</strong> – adgang og oppstart av simulatorøkten:
+   dørlås åpnes kun i gyldig bookingvindu (matchet på telefonnummer),
+   simulatorinnlogging ved ankomst. Funksjonsomfang mot tredjepart
+   (Trackman/SolverApp) avklares med produkteier før publisering.</li>
+</ol>
+<h3 id="playwright-funksjonsskanner-issue-9">Playwright-funksjonsskanner (issue #9)</h3>
+<p>CLI-basert headless skanning av alle Clubsite-funksjoner hos
+<a href="https://skigk.no">Ski Golfklubb</a> med fullside-skjermbilder som
+dokumentasjonsbevis og rapport per funksjon: nyheter, bildearkiv,
+dokumentarkiv, banemodul, kurs, turneringer, online påmelding med
+betaling, blogg, dynamisk kalender, fotoalbum, kontaktlister,
+skjemagenerator, restaurant/kafé, enkel nettbutikk, handlekurv,
+ordreoversikt, maloppsett og dynamisk elementplassering (drag/drop).
+Simulatorfunksjoner verifiseres mot Arendal GK.</p>
+<h2 id="prioritet-1-bekreft-produksjonsgrunnlaget">Prioritet 1 – bekreft produksjonsgrunnlaget</h2>
+<ul>
+<li>[ ] Kontroller produksjonsdomenet med CLI etter opplasting.</li>
+<li>[ ] Sammenlign publiserte filer med release-manifestet ved tilgang til serveren.</li>
+<li>[ ] Dokumenter serverkrav og tilgjengelig backup-/tilbakeføringsrutine.</li>
+<li>[ ] Registrer hvilken release/commit som faktisk ligger på IIS.</li>
+</ul>
+<h2 id="prioritet-2-trygg-vedlikeholdsrutine">Prioritet 2 – trygg vedlikeholdsrutine</h2>
+<ul>
+<li>[ ] Publiser direkte, test live med Playwright, og synkroniser deretter kildekoden til Git.</li>
+<li>[ ] Avklar branch-beskyttelse/regler støttet av organisasjonens abonnement.</li>
+<li>[ ] Vurder tilgjengelighet, mobilmeny og visuell kontroll som separat avtalt arbeid.</li>
+<li>[ ] Etabler rutine for avhengighetsoppdateringer og regresjonskontroll.</li>
+<li>[ ] Gå gjennom eksisterende kildekode-lint og eventuelle kjente avvik.</li>
+</ul>
+<h2 id="prioritet-3-dokumentasjon-og-forbedringer">Prioritet 3 – dokumentasjon og forbedringer</h2>
+<ul>
+<li>[ ] Vedlikehold og kontroller offentlig Pages-dokumentasjon ved dokumentasjonsendringer.</li>
+<li>[ ] Avklar om kontaktsiden skal ha et reelt mottaksendepunkt i fremtiden.</li>
+<li>[ ] Gjennomgå innhold, lenker og rettigheter til bilder/tekster med innholdseier.</li>
+</ul>
+<h2 id="sjekkliste-for-hver-oppgave">Sjekkliste for hver oppgave</h2>
+<ul>
+<li>[ ] Beskriv ønsket resultat og hva som er utenfor omfang.</li>
+<li>[ ] Oppgi akseptansekriterier og relevant kontrollmetode.</li>
+<li>[ ] Avtal eventuelle atferds- eller designendringer før implementering.</li>
+<li>[ ] Gjør kildeendringene i en egen gren.</li>
+<li>[ ] Bygg og kontroller med CLI.</li>
+<li>[ ] Oppdater direkte berørt dokumentasjon.</li>
+<li>[ ] Knytt PR, commit og eventuell release til oppgaven.</li>
+<li>[ ] Registrer resultatet fra produksjonskontrollen når endringen publiseres.</li>
+</ul>
+<h2 id="statusbruk">Statusbruk</h2>
+<ul>
+<li><strong>Todo:</strong> ikke startet.</li>
+<li><strong>In Progress:</strong> aktivt arbeid.</li>
+<li><strong>Done:</strong> akseptansekriteriene er kontrollert og resultatet lagret.</li>
+</ul>
+<p>En oppgave med ekstern blokkering, som manglende nødvendig tilgang, skal
+forbli åpen og beskrive blokkeringen.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

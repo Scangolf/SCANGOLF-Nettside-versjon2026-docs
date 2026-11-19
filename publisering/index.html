@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="nb" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://scangolf.github.io/SCANGOLF-Nettside-versjon2026-docs/publisering/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Publisering og tilbakeføring - SCANGOLF – nettside 2026</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">SCANGOLF – nettside 2026</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Oversikt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../arkitektur/" class="nav-link">Arkitektur og filer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../utvikling/" class="nav-link">Lokal utvikling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Publisering og tilbakeføring</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../kvalitet/" class="nav-link">Kvalitetskontroll</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../plan/" class="nav-link">Plan og sjekklister</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../endringslogg/" class="nav-link">Endringslogg</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../utvikling/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../kvalitet/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Scangolf/SCANGOLF-Nettside-versjon2026-docs" class="nav-link">Scangolf/SCANGOLF-Nettside-versjon2026-docs</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#publisering-til-iis" class="nav-link">Publisering til IIS</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#redigering-av-toppmenyen" class="nav-link">Redigering av toppmenyen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kundeuttalelser" class="nav-link">Kundeuttalelser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#merkevare-og-produktnavn" class="nav-link">Merkevare og produktnavn</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vanlig-publisering" class="nav-link">Vanlig publisering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#forhandsvisning-av-endringer" class="nav-link">Forhåndsvisning av endringer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tilbakefring" class="nav-link">Tilbakeføring</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="publisering-til-iis">Publisering til IIS</h1>
+<h2 id="redigering-av-toppmenyen">Redigering av toppmenyen</h2>
+<p>Menytekst, overskrifter, lenker og rekkefølge redigeres i
+<code>lib/content/meny.ts</code>. Desktop, nettbrett og mobil bruker samme innholdsfil.
+Behold formatet <code>{ label: 'Navn', href: '/side' }</code> for lenker. Interne lenker
+må peke til eksisterende sider. Produktinnhold og sidens URL endres ikke ved
+å redigere menyfilen.</p>
+<h2 id="kundeuttalelser">Kundeuttalelser</h2>
+<p>De delte kundeuttalelsene som vises på forsiden og <code>/referanser</code>, redigeres
+kun i <code>lib/content/customerTestimonials.ts</code>. Begge sidene bruker samme
+komponent og datakilde; ikke legg inn egne sitatkopier på enkeltsidene.</p>
+<h2 id="merkevare-og-produktnavn">Merkevare og produktnavn</h2>
+<p>ScanGolf Clubsite HUB er navnet på det samlede løsningsuniverset, med
+slagordet «For golfklubber med ambisjoner!». Clubsite CMS, Clubsite Booking,
+Scangolf.no, appene og partnerløsningene beholder sine egne produktnavn.
+Sørg for at endringer i felles merkevaretekster ikke erstatter navnene på
+enkeltproduktene eller endrer eksisterende URL-er.</p>
+<p>Kjør kodekontroll og bygg før inkrementell publisering. En endring i den
+felles toppmenyen krever oppdaterte statiske sidefiler for sidene som viser
+menyen; uendrede ressurser skal fortsatt hoppes over.</p>
+<h2 id="vanlig-publisering">Vanlig publisering</h2>
+<p>Etter at innhold eller kode er endret, kjør én kommando fra prosjektmappen:</p>
+<pre><code class="language-powershell">npm run deploy:iis
+</code></pre>
+<p>Kommandoen bygger og kontrollerer den statiske IIS-pakken lokalt før den
+kobler til serveren. Hvis byggingen feiler, blir ingenting lastet opp.</p>
+<p>Publiser først direkte til IIS. Test den publiserte siden med Playwright,
+inkludert berørte sider og lenker. Når testen er godkjent, committ og push
+kildeendringene til Git. Git inneholder dermed den testede versjonen.</p>
+<p>Publiseringen sammenligner SHA-256 for pakkefilene med siste vellykkede
+publisering og sender bare nye eller endrede filer. Tilfeldig build-ID i
+statisk HTML/TXT ignoreres i sammenligningen, slik at en endring på én side
+ikke tvinger opplasting av alle sidene. Ressurser og interne skript sendes
+før TXT-/HTML-sider, og <code>web.config</code> sendes sist. Hvis ingen filer er endret,
+kobler publiseringen ikke til serveren og laster ingenting opp.</p>
+<p>Før en eksisterende fil overskrives, flyttes den på serveren til en egen,
+datostemplet backupmappe:</p>
+<pre><code class="language-text">/Backup-&lt;tidspunkt&gt;/
+</code></pre>
+<p>Serverbackupen blir liggende på serveren; den lastes ikke ned. Den lokale
+<code>iis-publisering\_old</code>-mappen er et separat arkiv for tidligere pakker og
+gamle sider. Den er ikke med i opplastingslisten og skal aldri publiseres.</p>
+<p>Filer som ikke lenger finnes i den lokale pakken slettes ikke automatisk fra
+serveren. Dette bevarer gamle, hashede ressurser som kan være i bruk av åpne
+nettleserfaner. Kontroller eventuelle foreldreløse sider før manuell rydding.</p>
+<h2 id="forhandsvisning-av-endringer">Forhåndsvisning av endringer</h2>
+<p>For å se hvilke filer som ville blitt publisert uten å koble til serveren:</p>
+<pre><code class="language-powershell">.\scripts\publish-ftps.ps1 -Preview
+</code></pre>
+<p>For å publisere et avgrenset utvalg fra den ferdigbygde pakken, oppgi relative
+filbaner. Manifestet oppdateres da bare for filene som faktisk ble overført:</p>
+<pre><code class="language-powershell">.\scripts\publish-ftps.ps1 -OnlyFiles 'partner-apper/google-workspace.html','assets/images/workspace-non-profits.png'
+</code></pre>
+<p>SHA-256-manifestet for siste vellykkede opplasting og publiseringslogger
+lagres lokalt utenfor prosjektet:</p>
+<pre><code class="language-text">%USERPROFILE%\.scangolf\cs25-iis-published.json
+%USERPROFILE%\.scangolf\logs\
+</code></pre>
+<p>Ved første publisering på en ny maskin finnes ikke manifestet ennå. Da
+publiseres hele pakken én gang; etter en vellykket opplasting blir videre
+publiseringer inkrementelle.</p>
+<h2 id="tilbakefring">Tilbakeføring</h2>
+<p>De overskrevne serverfilene ligger i <code>/Backup-&lt;tidspunkt&gt;/</code> på serveren.
+Flytt ønsket fil tilbake til samme relative plassering i webroten via FTPS.
+Nye filer har ingen tidligere versjon å gjenopprette; publiser den tidligere
+pakken på nytt for å tilbakeføre dem.</p>
+<p>Påloggingen leses fra <code>%USERPROFILE%\.scangolf\cs25-ftp-credentials.ps1</code>.
+Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
