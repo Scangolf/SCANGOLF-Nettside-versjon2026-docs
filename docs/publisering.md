@@ -44,11 +44,16 @@ ikke tvinger opplasting av alle sidene. Ressurser og interne skript sendes
 før TXT-/HTML-sider, og `web.config` sendes sist. Hvis ingen filer er endret,
 kobler publiseringen ikke til serveren og laster ingenting opp.
 
-Før en eksisterende fil overskrives, lastes akkurat den filen ned til:
+Før en eksisterende fil overskrives, flyttes den på serveren til en egen,
+datostemplet backupmappe:
 
 ```text
-iis-publisering\_old\serverbackup-<tidspunkt>\
+/Backup-<tidspunkt>/
 ```
+
+Serverbackupen blir liggende på serveren; den lastes ikke ned. Den lokale
+`iis-publisering\_old`-mappen er et separat arkiv for tidligere pakker og
+gamle sider. Den er ikke med i opplastingslisten og skal aldri publiseres.
 
 Filer som ikke lenger finnes i den lokale pakken slettes ikke automatisk fra
 serveren. Dette bevarer gamle, hashede ressurser som kan være i bruk av åpne
@@ -83,8 +88,8 @@ publiseringer inkrementelle.
 
 ## Tilbakeføring
 
-De overskrevne serverfilene ligger i den lokale sikkerhetskopien nevnt over.
-Kopier ønsket fil tilbake til samme relative plassering i webroten via FTPS.
+De overskrevne serverfilene ligger i `/Backup-<tidspunkt>/` på serveren.
+Flytt ønsket fil tilbake til samme relative plassering i webroten via FTPS.
 Nye filer har ingen tidligere versjon å gjenopprette; publiser den tidligere
 pakken på nytt for å tilbakeføre dem.
 
