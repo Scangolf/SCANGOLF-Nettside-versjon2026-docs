@@ -68,8 +68,8 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.
 
 ## 2026-11-24 – GKIT-logo på tjenestesiden
 
-- Banneret på `/tjenester` viser Golfklubbenes IT-logoen til høyre på desktop
-  og under teksten på mobil.
+- GKIT-logoen erstatter skjoldikonet over «IT-support» på `/tjenester`
+  (120 px høy). Banneret står uten logo, etter brukerens korrigering.
 - Logoen bruker en beskåret WebP-versjon uten gjennomsiktige kanter, med maks
   2 px hvit flate rundt selve logoen.
 - Publisert til IIS med server-side sikkerhetskopier; slutt-preview viste 0
