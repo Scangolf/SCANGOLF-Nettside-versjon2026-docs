@@ -120,6 +120,14 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2026-11-24-overgang-til-clubsiteno" class="nav-link">2026-11-24 – overgang til clubsite.no</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2026-11-24-gkit-logo-pa-tjenestesiden" class="nav-link">2026-11-24 – GKIT-logo på tjenestesiden</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -173,8 +181,8 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.</p>
 </ul>
 <h2 id="2026-11-24-samlet-produksjonsversjon">2026-11-24 – samlet produksjonsversjon</h2>
 <ul>
-<li>Alle akkumulerte nettsideendringer er bygget og publisert til
-  <code>cs25.clubsite.no</code> med server-side sikkerhetskopier.</li>
+<li>Alle akkumulerte nettsideendringer er bygget og publisert til det daværende
+  utviklingsdomenet med server-side sikkerhetskopier.</li>
 <li>Versjonen omfatter blant annet GolfBox medlemsinnmelding, partner- og
   produktlogoer, oppdatert nyhetsside, Ski Golfklubb-saken, kontaktskjema med
   SMTP2GO-endepunkt, sitemap og nye redaksjonelle bilder.</li>
@@ -182,6 +190,25 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.</p>
   GolfBox-siden, sitemap og mobilvisning ble kontrollert live.</li>
 <li>Headless Playwright CLI rapporterte 0 konsollfeil og 0 advarsler.</li>
 <li>Aktiv kildeversjon er commit <code>0d818c6</code> med etterfølgende dokumentasjonscommit.</li>
+</ul>
+<h2 id="2026-11-24-overgang-til-clubsiteno">2026-11-24 – overgang til clubsite.no</h2>
+<ul>
+<li><code>https://clubsite.no</code> er satt som canonical produksjonsdomene i metadata,
+  sitemap, IIS-regler, kontaktskjema og aktiv dokumentasjon.</li>
+<li>HTTP, www-adressen og tidligere utviklingsvert omdirigeres permanent til
+  produksjonsdomenet med sti og query bevart.</li>
+<li>Alle 38 sitemap-sider svarte 200 etter publisering. Automatisert headless
+  kontroll fant ingen gamle domenelenker, brutte bilder eller konsollfeil.</li>
+</ul>
+<h2 id="2026-11-24-gkit-logo-pa-tjenestesiden">2026-11-24 – GKIT-logo på tjenestesiden</h2>
+<ul>
+<li>Banneret på <code>/tjenester</code> viser Golfklubbenes IT-logoen til høyre på desktop
+  og under teksten på mobil.</li>
+<li>Logoen bruker en beskåret WebP-versjon uten gjennomsiktige kanter, med maks
+  2 px hvit flate rundt selve logoen.</li>
+<li>Publisert til IIS med server-side sikkerhetskopier; slutt-preview viste 0
+  avvik. Headless Playwright bekreftet logo, 2 px kant og 0 konsollfeil på
+  desktop og mobil.</li>
 </ul></div>
             </div>
         </div>

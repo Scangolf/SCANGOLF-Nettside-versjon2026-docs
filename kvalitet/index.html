@@ -128,23 +128,23 @@
 <li>At bilder ikke krever <code>/_next/image</code>.</li>
 <li>PNG-, JPEG- og WebP-signaturer.</li>
 <li>Identifiserte utviklings- og HMR-markører.</li>
-<li>E-post-/telefonkontakt i stedet for det inaktive kontaktskjemaet.</li>
+<li>Kontaktskjemaets statiske side og serverendepunkt i publiseringspakken.</li>
 </ul>
 <p>MkDocs bygges lokalt med <code>--strict</code> før direkte publisering til dokumentasjonens
 <code>gh-pages</code>-gren. Denne byggingen publiserer ikke nettsiden til IIS.</p>
 <h2 id="manuell-cli-kontroll-etter-opplasting">Manuell CLI-kontroll etter opplasting</h2>
 <p>Kjør fra PowerShell. <code>curl.exe</code> brukes eksplisitt for å unngå aliaser.</p>
-<pre><code class="language-powershell">curl.exe -I https://cs25.clubsite.no/
-curl.exe -I https://cs25.clubsite.no/booking
-curl.exe -I https://cs25.clubsite.no/losninger
-curl.exe -I https://cs25.clubsite.no/losninger/clubsite-ai-assistent
-curl.exe -I https://cs25.clubsite.no/nyheter
-curl.exe -I https://cs25.clubsite.no/nyheter/har-fatt-ny-hjelper-pa-hjemmesiden
-curl.exe -I https://cs25.clubsite.no/booking.txt
-curl.exe -I https://cs25.clubsite.no/assets/images/cs.png
-curl.exe -I https://cs25.clubsite.no/default.asp
-curl.exe -I &quot;http://cs25.clubsite.no/booking?test=1&quot;
-curl.exe -I https://cs25.clubsite.no/ikke-en-ekte-side
+<pre><code class="language-powershell">curl.exe -I https://clubsite.no/
+curl.exe -I https://clubsite.no/booking
+curl.exe -I https://clubsite.no/losninger
+curl.exe -I https://clubsite.no/losninger/clubsite-ai-assistent
+curl.exe -I https://clubsite.no/nyheter
+curl.exe -I https://clubsite.no/nyheter/har-fatt-ny-hjelper-pa-hjemmesiden
+curl.exe -I https://clubsite.no/booking.txt
+curl.exe -I https://clubsite.no/assets/images/cs.png
+curl.exe -I https://clubsite.no/default.asp
+curl.exe -I &quot;http://clubsite.no/booking?test=1&quot;
+curl.exe -I https://clubsite.no/ikke-en-ekte-side
 </code></pre>
 <p>Forventninger:</p>
 <ul>
