@@ -44,3 +44,15 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.
 - Nettsiden publiseres direkte til IIS, testes med Playwright og synkroniseres
   deretter til prosjektets Git-repo.
 - Dokumentasjonen bygges lokalt med MkDocs og publiseres direkte til `gh-pages`.
+
+## 2026-11-24 – samlet produksjonsversjon
+
+- Alle akkumulerte nettsideendringer er bygget og publisert til
+  `cs25.clubsite.no` med server-side sikkerhetskopier.
+- Versjonen omfatter blant annet GolfBox medlemsinnmelding, partner- og
+  produktlogoer, oppdatert nyhetsside, Ski Golfklubb-saken, kontaktskjema med
+  SMTP2GO-endepunkt, sitemap og nye redaksjonelle bilder.
+- Sluttkontrollen viste 0 deployavvik. Forside, løsninger, nyheter, kontakt,
+  GolfBox-siden, sitemap og mobilvisning ble kontrollert live.
+- Headless Playwright CLI rapporterte 0 konsollfeil og 0 advarsler.
+- Aktiv kildeversjon er commit `0d818c6` med etterfølgende dokumentasjonscommit.

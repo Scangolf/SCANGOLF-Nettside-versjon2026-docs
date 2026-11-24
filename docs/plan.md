@@ -50,14 +50,14 @@ Simulatorfunksjoner verifiseres mot Arendal GK.
 
 ## Prioritet 1 – bekreft produksjonsgrunnlaget
 
-- [ ] Kontroller produksjonsdomenet med CLI etter opplasting.
+- [x] Kontroller produksjonsdomenet med CLI etter opplasting.
 - [ ] Sammenlign publiserte filer med release-manifestet ved tilgang til serveren.
 - [ ] Dokumenter serverkrav og tilgjengelig backup-/tilbakeføringsrutine.
-- [ ] Registrer hvilken release/commit som faktisk ligger på IIS.
+- [x] Registrer hvilken release/commit som faktisk ligger på IIS.
 
 ## Prioritet 2 – trygg vedlikeholdsrutine
 
-- [ ] Publiser direkte, test live med Playwright, og synkroniser deretter kildekoden til Git.
+- [x] Publiser direkte, test live med Playwright, og synkroniser deretter kildekoden til Git.
 - [ ] Avklar branch-beskyttelse/regler støttet av organisasjonens abonnement.
 - [ ] Vurder tilgjengelighet, mobilmeny og visuell kontroll som separat avtalt arbeid.
 - [ ] Etabler rutine for avhengighetsoppdateringer og regresjonskontroll.
@@ -65,8 +65,8 @@ Simulatorfunksjoner verifiseres mot Arendal GK.
 
 ## Prioritet 3 – dokumentasjon og forbedringer
 
-- [ ] Vedlikehold og kontroller offentlig Pages-dokumentasjon ved dokumentasjonsendringer.
-- [ ] Avklar om kontaktsiden skal ha et reelt mottaksendepunkt i fremtiden.
+- [x] Vedlikehold og kontroller offentlig Pages-dokumentasjon ved dokumentasjonsendringer.
+- [x] Avklar og implementer kontaktsiden med et reelt mottaksendepunkt.
 - [ ] Gjennomgå innhold, lenker og rettigheter til bilder/tekster med innholdseier.
 
 ## Sjekkliste for hver oppgave
