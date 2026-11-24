@@ -116,6 +116,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2026-11-24-samlet-produksjonsversjon" class="nav-link">2026-11-24 – samlet produksjonsversjon</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -166,6 +170,18 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.</p>
 <li>Nettsiden publiseres direkte til IIS, testes med Playwright og synkroniseres
   deretter til prosjektets Git-repo.</li>
 <li>Dokumentasjonen bygges lokalt med MkDocs og publiseres direkte til <code>gh-pages</code>.</li>
+</ul>
+<h2 id="2026-11-24-samlet-produksjonsversjon">2026-11-24 – samlet produksjonsversjon</h2>
+<ul>
+<li>Alle akkumulerte nettsideendringer er bygget og publisert til
+  <code>cs25.clubsite.no</code> med server-side sikkerhetskopier.</li>
+<li>Versjonen omfatter blant annet GolfBox medlemsinnmelding, partner- og
+  produktlogoer, oppdatert nyhetsside, Ski Golfklubb-saken, kontaktskjema med
+  SMTP2GO-endepunkt, sitemap og nye redaksjonelle bilder.</li>
+<li>Sluttkontrollen viste 0 deployavvik. Forside, løsninger, nyheter, kontakt,
+  GolfBox-siden, sitemap og mobilvisning ble kontrollert live.</li>
+<li>Headless Playwright CLI rapporterte 0 konsollfeil og 0 advarsler.</li>
+<li>Aktiv kildeversjon er commit <code>0d818c6</code> med etterfølgende dokumentasjonscommit.</li>
 </ul></div>
             </div>
         </div>
