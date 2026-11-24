@@ -47,8 +47,8 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.
 
 ## 2026-11-24 – samlet produksjonsversjon
 
-- Alle akkumulerte nettsideendringer er bygget og publisert til
-  `cs25.clubsite.no` med server-side sikkerhetskopier.
+- Alle akkumulerte nettsideendringer er bygget og publisert til det daværende
+  utviklingsdomenet med server-side sikkerhetskopier.
 - Versjonen omfatter blant annet GolfBox medlemsinnmelding, partner- og
   produktlogoer, oppdatert nyhetsside, Ski Golfklubb-saken, kontaktskjema med
   SMTP2GO-endepunkt, sitemap og nye redaksjonelle bilder.
@@ -56,3 +56,22 @@ gjør ingen nye endringer på IIS og inkluderer ingen ny nettleserkontroll.
   GolfBox-siden, sitemap og mobilvisning ble kontrollert live.
 - Headless Playwright CLI rapporterte 0 konsollfeil og 0 advarsler.
 - Aktiv kildeversjon er commit `0d818c6` med etterfølgende dokumentasjonscommit.
+
+## 2026-11-24 – overgang til clubsite.no
+
+- `https://clubsite.no` er satt som canonical produksjonsdomene i metadata,
+  sitemap, IIS-regler, kontaktskjema og aktiv dokumentasjon.
+- HTTP, www-adressen og tidligere utviklingsvert omdirigeres permanent til
+  produksjonsdomenet med sti og query bevart.
+- Alle 38 sitemap-sider svarte 200 etter publisering. Automatisert headless
+  kontroll fant ingen gamle domenelenker, brutte bilder eller konsollfeil.
+
+## 2026-11-24 – GKIT-logo på tjenestesiden
+
+- Banneret på `/tjenester` viser Golfklubbenes IT-logoen til høyre på desktop
+  og under teksten på mobil.
+- Logoen bruker en beskåret WebP-versjon uten gjennomsiktige kanter, med maks
+  2 px hvit flate rundt selve logoen.
+- Publisert til IIS med server-side sikkerhetskopier; slutt-preview viste 0
+  avvik. Headless Playwright bekreftet logo, 2 px kant og 0 konsollfeil på
+  desktop og mobil.

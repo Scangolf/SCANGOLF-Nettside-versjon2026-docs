@@ -1,6 +1,6 @@
 # SCANGOLF – nettside 2026
 
-Dette er vedlikeholdsdokumentasjonen for <https://cs25.clubsite.no>.
+Dette er vedlikeholdsdokumentasjonen for <https://clubsite.no>.
 Nettsiden bygges fra React/Next.js til statiske filer som publiseres manuelt
 på Windows IIS. Node.js kreves på byggemaskinen, ikke på webserveren.
 
