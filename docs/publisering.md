@@ -33,24 +33,26 @@ Bygg og kontroller IIS-pakken lokalt:
 npm run build:iis
 ```
 
-Publisering skjer med PowerShell Remoting via WinRM HTTPS til
-`remote.clubsite.no` med godkjent legitimasjon. Kontroller først at IIS-siten
-`CLUBSITE-HOME`, app-poolen og den fysiske mappen stemmer. Sammenlign
-pakkefilene med serveren, sikkerhetskopier filer som skal overskrives, og
-verifiser filene etter overføring. Ikke publiser `_old` eller slett filer på
-serveren som ikke finnes i pakken. Kontroller spesielt endringer i
-`web.config` før den eventuelt erstattes.
+For dette prosjektet bygges IIS-pakken lokalt og publiseres med WinSCP via
+FTPS. Bruk Windows PowerShell 5.1 for publiseringsscriptet:
 
-Test berørte sider på det publiserte nettstedet før kildeendringene committes.
-Push utføres bare etter egen beskjed.
+```powershell
+npm run build:iis
+& "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File scripts\publish-ftps.ps1 -Preview
+```
 
-`npm run deploy:iis` og `scripts/publish-ftps.ps1` er eldre FTPS-oppsett,
-ikke WinRM-rutinen, og skal ikke brukes til denne publiseringen. Prosjektet
-har foreløpig ikke et eget WinRM-publiseringsscript.
+Kontroller forhåndsvisningen før overføring. Scriptet henter legitimasjon fra
+brukerens private `.scangolf`-mappe, sikkerhetskopierer filer som overskrives
+på serveren, og sletter ikke eldre serverfiler. Ved avbrudd kan avgrensede
+puljer sendes med `-OnlyFiles`; kjør deretter `-Preview` på nytt og bekreft at
+det ikke står filer igjen å publisere. Ikke publiser `_old`.
+
+Test de berørte sidene live med Playwright. Commit og push kildekoden etter
+bestått kontroll og når dette er avtalt.
 
 ## Tilbakeføring
 
 Gjenopprett overskrevne filer fra den aktuelle serverbackupen til samme
-relative plassering i webroten. Nye filer har ingen tidligere versjon å
-gjenopprette; vurder dem separat ved tilbakeføring. Legitimasjon skal aldri
-lagres i prosjektet eller deles.
+relative plassering i webroten med WinSCP. Nye filer har ingen tidligere
+versjon å gjenopprette; vurder dem separat ved tilbakeføring. Legitimasjon
+skal aldri lagres i prosjektet eller deles.
