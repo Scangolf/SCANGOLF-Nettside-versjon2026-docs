@@ -60,17 +60,17 @@
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> Søk
                             </a>
                         </li>
                             <li class="nav-item">
                                 <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
+                                    <i class="fa fa-arrow-left"></i> Forrige
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a rel="next" href="../utvikling/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
+                                    Neste <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -85,7 +85,7 @@
             <div class="row">
                     <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Innholdsfortegnelse">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
@@ -142,6 +142,10 @@
 <p><code>next.config.ts</code> setter <code>output: 'export'</code>, <code>trailingSlash: false</code> og
 <code>images.unoptimized: true</code>. Bildene leveres direkte fra statiske filer,
 ikke gjennom <code>/_next/image</code>.</p>
+<p>Google Tag Manager lastes fra rotlayouten med container-ID <code>GTM-TGT598H5</code>,
+slik at alle app-ruter, inkludert 404-siden, får samme sporing. GA4 må
+konfigureres i GTM-containeren. Vurder samtykkehåndtering før
+analyseinformasjonskapsler aktiveres.</p>
 <h2 id="mapper-og-filer">Mapper og filer</h2>
 <table>
 <thead>
@@ -228,7 +232,7 @@ ikke vise en bekreftelse på at serveren har mottatt en melding.</p></div>
 
         <footer class="col-md-12">
             <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+            <p>Dokumentasjonen bygget med <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
@@ -242,17 +246,17 @@ ikke vise en bekreftelse på at serveren har mottatt en melding.</p></div>
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="searchModalLabel">Søk</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Lukk"></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>Her kan du søke i disse dokumentene. Skriv søketeksten nedenfor.</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Søk ..." id="mkdocs-search-query" title="Skriv søketeksten her">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results" data-no-results-text="Fant ingen resultater"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -262,33 +266,33 @@ ikke vise en bekreftelse på at serveren har mottatt en melding.</p></div>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="keyboardModalLabel">Tastatursnarveier</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Lukk"></button>
             </div>
             <div class="modal-body">
               <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
+                    <th style="width: 20%;">Taster</th>
+                    <th>Handling</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>Åpne denne hjelpen</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>Neste side</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>Forrige side</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>Søk</td>
                   </tr>
                 </tbody>
               </table>

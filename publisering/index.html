@@ -60,17 +60,17 @@
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
+                                <i class="fa fa-search"></i> Søk
                             </a>
                         </li>
                             <li class="nav-item">
                                 <a rel="prev" href="../utvikling/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
+                                    <i class="fa fa-arrow-left"></i> Forrige
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a rel="next" href="../kvalitet/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
+                                    Neste <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -85,7 +85,7 @@
             <div class="row">
                     <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Innholdsfortegnelse">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
@@ -109,10 +109,6 @@
               </ul>
             </li>
             <li class="nav-item" data-bs-level="2"><a href="#vanlig-publisering" class="nav-link">Vanlig publisering</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#forhandsvisning-av-endringer" class="nav-link">Forhåndsvisning av endringer</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -144,63 +140,35 @@ slagordet «For golfklubber med ambisjoner!». Clubsite CMS, Clubsite Booking,
 Scangolf.no, appene og partnerløsningene beholder sine egne produktnavn.
 Sørg for at endringer i felles merkevaretekster ikke erstatter navnene på
 enkeltproduktene eller endrer eksisterende URL-er.</p>
-<p>Kjør kodekontroll og bygg før inkrementell publisering. En endring i den
-felles toppmenyen krever oppdaterte statiske sidefiler for sidene som viser
-menyen; uendrede ressurser skal fortsatt hoppes over.</p>
+<p>Kjør kodekontroll og bygg før publisering. En endring i den felles
+toppmenyen krever oppdaterte statiske sidefiler for sidene som viser menyen.</p>
 <h2 id="vanlig-publisering">Vanlig publisering</h2>
-<p>Etter at innhold eller kode er endret, kjør én kommando fra prosjektmappen:</p>
-<pre><code class="language-powershell">npm run deploy:iis
+<p>Bygg og kontroller IIS-pakken lokalt:</p>
+<pre><code class="language-powershell">npm run build:iis
 </code></pre>
-<p>Kommandoen bygger og kontrollerer den statiske IIS-pakken lokalt før den
-kobler til serveren. Hvis byggingen feiler, blir ingenting lastet opp.</p>
-<p>Publiser først direkte til IIS. Test den publiserte siden med Playwright,
-inkludert berørte sider og lenker. Når testen er godkjent, committ og push
-kildeendringene til Git. Git inneholder dermed den testede versjonen.</p>
-<p>Publiseringen sammenligner SHA-256 for pakkefilene med siste vellykkede
-publisering og sender bare nye eller endrede filer. Tilfeldig build-ID i
-statisk HTML/TXT ignoreres i sammenligningen, slik at en endring på én side
-ikke tvinger opplasting av alle sidene. Ressurser og interne skript sendes
-før TXT-/HTML-sider, og <code>web.config</code> sendes sist. Hvis ingen filer er endret,
-kobler publiseringen ikke til serveren og laster ingenting opp.</p>
-<p>Før en eksisterende fil overskrives, flyttes den på serveren til en egen,
-datostemplet backupmappe:</p>
-<pre><code class="language-text">/Backup-&lt;tidspunkt&gt;/
+<p>For dette prosjektet bygges IIS-pakken lokalt og publiseres med WinSCP via
+FTPS. Bruk Windows PowerShell 5.1 for publiseringsscriptet:</p>
+<pre><code class="language-powershell">npm run build:iis
+&amp; &quot;$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -ExecutionPolicy Bypass -File scripts\publish-ftps.ps1 -Preview
 </code></pre>
-<p>Serverbackupen blir liggende på serveren; den lastes ikke ned. Den lokale
-<code>iis-publisering\_old</code>-mappen er et separat arkiv for tidligere pakker og
-gamle sider. Den er ikke med i opplastingslisten og skal aldri publiseres.</p>
-<p>Filer som ikke lenger finnes i den lokale pakken slettes ikke automatisk fra
-serveren. Dette bevarer gamle, hashede ressurser som kan være i bruk av åpne
-nettleserfaner. Kontroller eventuelle foreldreløse sider før manuell rydding.</p>
-<h2 id="forhandsvisning-av-endringer">Forhåndsvisning av endringer</h2>
-<p>For å se hvilke filer som ville blitt publisert uten å koble til serveren:</p>
-<pre><code class="language-powershell">.\scripts\publish-ftps.ps1 -Preview
-</code></pre>
-<p>For å publisere et avgrenset utvalg fra den ferdigbygde pakken, oppgi relative
-filbaner. Manifestet oppdateres da bare for filene som faktisk ble overført:</p>
-<pre><code class="language-powershell">.\scripts\publish-ftps.ps1 -OnlyFiles 'partner-apper/google-workspace.html','assets/images/workspace-non-profits.png'
-</code></pre>
-<p>SHA-256-manifestet for siste vellykkede opplasting og publiseringslogger
-lagres lokalt utenfor prosjektet:</p>
-<pre><code class="language-text">%USERPROFILE%\.scangolf\cs25-iis-published.json
-%USERPROFILE%\.scangolf\logs\
-</code></pre>
-<p>Ved første publisering på en ny maskin finnes ikke manifestet ennå. Da
-publiseres hele pakken én gang; etter en vellykket opplasting blir videre
-publiseringer inkrementelle.</p>
+<p>Kontroller forhåndsvisningen før overføring. Scriptet henter legitimasjon fra
+brukerens private <code>.scangolf</code>-mappe, sikkerhetskopierer filer som overskrives
+på serveren, og sletter ikke eldre serverfiler. Ved avbrudd kan avgrensede
+puljer sendes med <code>-OnlyFiles</code>; kjør deretter <code>-Preview</code> på nytt og bekreft at
+det ikke står filer igjen å publisere. Ikke publiser <code>_old</code>.</p>
+<p>Test de berørte sidene live med Playwright. Commit og push kildekoden etter
+bestått kontroll og når dette er avtalt.</p>
 <h2 id="tilbakefring">Tilbakeføring</h2>
-<p>De overskrevne serverfilene ligger i <code>/Backup-&lt;tidspunkt&gt;/</code> på serveren.
-Flytt ønsket fil tilbake til samme relative plassering i webroten via FTPS.
-Nye filer har ingen tidligere versjon å gjenopprette; publiser den tidligere
-pakken på nytt for å tilbakeføre dem.</p>
-<p>Påloggingen leses fra <code>%USERPROFILE%\.scangolf\cs25-ftp-credentials.ps1</code>.
-Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.</p></div>
+<p>Gjenopprett overskrevne filer fra den aktuelle serverbackupen til samme
+relative plassering i webroten med WinSCP. Nye filer har ingen tidligere
+versjon å gjenopprette; vurder dem separat ved tilbakeføring. Legitimasjon
+skal aldri lagres i prosjektet eller deles.</p></div>
             </div>
         </div>
 
         <footer class="col-md-12">
             <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+            <p>Dokumentasjonen bygget med <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
@@ -214,17 +182,17 @@ Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.</p></div
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="searchModalLabel">Søk</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Lukk"></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>Her kan du søke i disse dokumentene. Skriv søketeksten nedenfor.</p>
                 <form>
                     <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Søk ..." id="mkdocs-search-query" title="Skriv søketeksten her">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results" data-no-results-text="Fant ingen resultater"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -234,33 +202,33 @@ Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.</p></div
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="keyboardModalLabel">Tastatursnarveier</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Lukk"></button>
             </div>
             <div class="modal-body">
               <table class="table">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
+                    <th style="width: 20%;">Taster</th>
+                    <th>Handling</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
+                    <td>Åpne denne hjelpen</td>
                   </tr>
                   <tr>
                     <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
+                    <td>Neste side</td>
                   </tr>
                   <tr>
                     <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
+                    <td>Forrige side</td>
                   </tr>
                   <tr>
                     <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
+                    <td>Søk</td>
                   </tr>
                 </tbody>
               </table>
