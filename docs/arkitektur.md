@@ -22,6 +22,11 @@ app + components + lib + public
 `images.unoptimized: true`. Bildene leveres direkte fra statiske filer,
 ikke gjennom `/_next/image`.
 
+Google Tag Manager lastes fra rotlayouten med container-ID `GTM-TGT598H5`,
+slik at alle app-ruter, inkludert 404-siden, får samme sporing. GA4 må
+konfigureres i GTM-containeren. Vurder samtykkehåndtering før
+analyseinformasjonskapsler aktiveres.
+
 ## Mapper og filer
 
 | Sted | Innhold | I Git? |

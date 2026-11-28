@@ -22,80 +22,35 @@ Scangolf.no, appene og partnerløsningene beholder sine egne produktnavn.
 Sørg for at endringer i felles merkevaretekster ikke erstatter navnene på
 enkeltproduktene eller endrer eksisterende URL-er.
 
-Kjør kodekontroll og bygg før inkrementell publisering. En endring i den
-felles toppmenyen krever oppdaterte statiske sidefiler for sidene som viser
-menyen; uendrede ressurser skal fortsatt hoppes over.
+Kjør kodekontroll og bygg før publisering. En endring i den felles
+toppmenyen krever oppdaterte statiske sidefiler for sidene som viser menyen.
 
 ## Vanlig publisering
 
-Etter at innhold eller kode er endret, kjør én kommando fra prosjektmappen:
+Bygg og kontroller IIS-pakken lokalt:
 
 ```powershell
-npm run deploy:iis
+npm run build:iis
 ```
 
-Kommandoen bygger og kontrollerer den statiske IIS-pakken lokalt før den
-kobler til serveren. Hvis byggingen feiler, blir ingenting lastet opp.
+Publisering skjer med PowerShell Remoting via WinRM HTTPS til
+`remote.clubsite.no` med godkjent legitimasjon. Kontroller først at IIS-siten
+`CLUBSITE-HOME`, app-poolen og den fysiske mappen stemmer. Sammenlign
+pakkefilene med serveren, sikkerhetskopier filer som skal overskrives, og
+verifiser filene etter overføring. Ikke publiser `_old` eller slett filer på
+serveren som ikke finnes i pakken. Kontroller spesielt endringer i
+`web.config` før den eventuelt erstattes.
 
-Publiser først direkte til IIS. Test den publiserte siden med Playwright,
-inkludert berørte sider og lenker. Når testen er godkjent, committ og push
-kildeendringene til Git. Git inneholder dermed den testede versjonen.
+Test berørte sider på det publiserte nettstedet før kildeendringene committes.
+Push utføres bare etter egen beskjed.
 
-Publiseringen sammenligner SHA-256 for pakkefilene med siste vellykkede
-publisering og sender bare nye eller endrede filer. Tilfeldig build-ID i
-statisk HTML/TXT ignoreres i sammenligningen, slik at en endring på én side
-ikke tvinger opplasting av alle sidene. Ressurser og interne skript sendes
-før TXT-/HTML-sider, og `web.config` sendes sist. Hvis ingen filer er endret,
-kobler publiseringen ikke til serveren og laster ingenting opp.
-
-Før en eksisterende fil overskrives, flyttes den på serveren til en egen,
-datostemplet backupmappe:
-
-```text
-/Backup-<tidspunkt>/
-```
-
-Serverbackupen blir liggende på serveren; den lastes ikke ned. Den lokale
-`iis-publisering\_old`-mappen er et separat arkiv for tidligere pakker og
-gamle sider. Den er ikke med i opplastingslisten og skal aldri publiseres.
-
-Filer som ikke lenger finnes i den lokale pakken slettes ikke automatisk fra
-serveren. Dette bevarer gamle, hashede ressurser som kan være i bruk av åpne
-nettleserfaner. Kontroller eventuelle foreldreløse sider før manuell rydding.
-
-## Forhåndsvisning av endringer
-
-For å se hvilke filer som ville blitt publisert uten å koble til serveren:
-
-```powershell
-.\scripts\publish-ftps.ps1 -Preview
-```
-
-For å publisere et avgrenset utvalg fra den ferdigbygde pakken, oppgi relative
-filbaner. Manifestet oppdateres da bare for filene som faktisk ble overført:
-
-```powershell
-.\scripts\publish-ftps.ps1 -OnlyFiles 'partner-apper/google-workspace.html','assets/images/workspace-non-profits.png'
-```
-
-SHA-256-manifestet for siste vellykkede opplasting og publiseringslogger
-lagres lokalt utenfor prosjektet:
-
-```text
-%USERPROFILE%\.scangolf\cs25-iis-published.json
-%USERPROFILE%\.scangolf\logs\
-```
-
-Ved første publisering på en ny maskin finnes ikke manifestet ennå. Da
-publiseres hele pakken én gang; etter en vellykket opplasting blir videre
-publiseringer inkrementelle.
+`npm run deploy:iis` og `scripts/publish-ftps.ps1` er eldre FTPS-oppsett,
+ikke WinRM-rutinen, og skal ikke brukes til denne publiseringen. Prosjektet
+har foreløpig ikke et eget WinRM-publiseringsscript.
 
 ## Tilbakeføring
 
-De overskrevne serverfilene ligger i `/Backup-<tidspunkt>/` på serveren.
-Flytt ønsket fil tilbake til samme relative plassering i webroten via FTPS.
-Nye filer har ingen tidligere versjon å gjenopprette; publiser den tidligere
-pakken på nytt for å tilbakeføre dem.
-
-Påloggingen leses fra `%USERPROFILE%\.scangolf\cs25-ftp-credentials.ps1`.
-Denne private filen skal ikke flyttes inn i prosjektmappen eller deles.
+Gjenopprett overskrevne filer fra den aktuelle serverbackupen til samme
+relative plassering i webroten. Nye filer har ingen tidligere versjon å
+gjenopprette; vurder dem separat ved tilbakeføring. Legitimasjon skal aldri
+lagres i prosjektet eller deles.
